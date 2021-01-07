@@ -1,5 +1,7 @@
 package br.com.rodrigo.apiorangetalents.model.entity;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,8 +16,10 @@ public class Pessoa {
 	
 	private String nome;
 	
+	@Column(unique = true)
 	private String email;
 	
+	@Column(unique = true)
 	private String cpf;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")

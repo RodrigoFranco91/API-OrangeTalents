@@ -17,9 +17,13 @@ public class PessoaController {
 	PessoaService service;
 
 	@PostMapping
-	public ResponseEntity<Pessoa> salvarCadastroDePessoa(@RequestBody Pessoa pessoa) {
-		service.salvarPessoa(pessoa);
-		return ResponseEntity.ok(pessoa);
-	}
+	public ResponseEntity<String> salvarCadastroDePessoa(@RequestBody Pessoa pessoa) {
+		try {
+			service.salvarPessoa(pessoa);
+			return ResponseEntity.ok(pessoa.getNome() + " foi cadastrado com sucesso!");
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Já existe um cadastro com seu E-mail ou com seu CPF!");
+		}
 
+	}
 }
