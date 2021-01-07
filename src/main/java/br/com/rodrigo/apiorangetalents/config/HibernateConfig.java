@@ -55,7 +55,9 @@ public class HibernateConfig {
 		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
 		factory.setDataSource(getDatasource());
 		factory.setHibernateProperties(hibernateProperties());
-		factory.setPackagesToScan(new String[] { "com.xadmin.springboothibernate.model" });
+		
+		//Abaixo o pacote que deve ser colocado é onde está suas classes que recebem o @Entity
+		factory.setPackagesToScan(new String[] { "br.com.rodrigo.apiorangetalents.model.entity" });
 		return factory;
 	}
 
